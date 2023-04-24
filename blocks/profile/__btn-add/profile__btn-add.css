@@ -11,12 +11,10 @@
   min-height: 50px;
   min-width: 150px;
 }
-
 .profile__btn-add:hover {
   opacity: .6;
   cursor: pointer;
 }
-
 @media screen and (max-width: 767px) {
   .profile__btn-add {
     margin: 36px auto 0;

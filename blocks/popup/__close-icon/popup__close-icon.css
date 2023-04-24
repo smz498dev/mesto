@@ -6,14 +6,13 @@
   top: -40px;
   right: -40px;
 }
-
 .popup__close-icon:hover {
   opacity: .6;
   cursor: pointer;
 }
-
 @media screen and (max-width:767px) {
   .popup__close-icon {
+    background: url(../../../images/close-icon-20.png) center no-repeat;
     width: 20px;
     min-height: 20px;
     top: -36px;

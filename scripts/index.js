@@ -15,9 +15,6 @@ function popupClose() {
 let btnClose = document.querySelector('.popup__close-icon');
 btnClose.addEventListener('click', popupClose);
 
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-}
 //Действие при нажатии на кнопку сохранить
 
 function saveDataForm() {
@@ -40,6 +37,11 @@ btnSave.addEventListener('click', (event) => {
   event.preventDefault();
 });
 btnSave.addEventListener('click', saveDataForm);
+
+
+
+
+ 
 
 
 

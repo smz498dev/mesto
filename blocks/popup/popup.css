@@ -7,9 +7,7 @@
   display: none;
   align-items: center;
   justify-content: center;
-
 }
-
 .popup::after {
   content: '';
   width: 100%;
