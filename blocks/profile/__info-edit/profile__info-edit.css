@@ -6,6 +6,11 @@
   background: url(../../../images/btn-edit-rectangle.svg) center no-repeat;
 }
 
+.profile__info-edit:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
 @media screen and (max-width:767px) {
   .profile__info-edit {
     margin-top: 24px;
