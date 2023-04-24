@@ -1,0 +1,12 @@
+.header__logo {
+  background: url(../../../images/header-logo-1280.png) left top no-repeat;
+  width: 100%;
+  min-height: 33px;
+}
+
+@media screen and (max-width: 767px) {
+  .header__logo {
+    background: url(../../../images/header-logo-767.png) left top no-repeat;
+    min-height: 25px;
+  }
+}

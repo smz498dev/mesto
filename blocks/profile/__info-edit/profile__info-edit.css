@@ -4,6 +4,9 @@
   background-color: transparent;
   border: none;
   background: url(../../../images/btn-edit-rectangle.svg) center no-repeat;
+  position: absolute;
+  right: 0;
+  top: 15px;
 }
 
 .profile__info-edit:hover {
@@ -13,6 +16,7 @@
 
 @media screen and (max-width:767px) {
   .profile__info-edit {
-    margin-top: 24px;
+    right: 8px;
+    top: 24px;
   }
 }

@@ -4,14 +4,15 @@
   min-height: 73px;
   max-width: 336px;
   display: flex;
+  position: relative;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
 }
 
 @media screen and (max-width: 767px) {
-  .profile__info{
-  margin: 0;
-  
+  .profile__info {
+    margin: 0;
+
   }
 }

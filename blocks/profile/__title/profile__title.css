@@ -2,16 +2,17 @@
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
+  text-align: center;
   margin: 0;
   padding: 0;
   max-width: 294px;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
   .profile__title {
     margin: 24px auto 0;
     font-size: 27px;
     line-height: 32.68px;
-    padding-left: 24px;
+    text-align: center;
   }
 }
