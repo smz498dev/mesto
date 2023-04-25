@@ -1,8 +1,7 @@
 .popup__input-item {
   font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
-  min-height: 27px;
-  margin: 30px auto 0;
+  margin: 36px auto 0;
   padding: 0;
   display: block;
   font-size: 14px;
@@ -10,5 +9,5 @@
   line-height: 16.94px;
   outline: none;
   border: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
 }

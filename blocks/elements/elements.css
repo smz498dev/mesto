@@ -9,8 +9,10 @@
   justify-items: center;
   justify-content: center;
 }
+
 @media screen and (max-width: 1023px) {
   .elements {
     padding: 0 19px;
+    margin: 36px auto 0;
   }
 }

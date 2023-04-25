@@ -1,7 +1,6 @@
 .profile__info {
   margin: 0 0 0 30px;
   color: #fff;
-  min-height: 73px;
   max-width: 336px;
   display: flex;
   position: relative;
@@ -9,6 +8,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 @media screen and (max-width: 767px) {
   .profile__info {
     margin: 0;

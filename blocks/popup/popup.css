@@ -7,15 +7,5 @@
   display: none;
   align-items: center;
   justify-content: center;
-}
-.popup::after {
-  content: '';
-  width: 100%;
-  min-height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #000;
-  opacity: .5;
-  z-index: 1;
+  background-color: rgba(0, 0, 0, .5);
 }
