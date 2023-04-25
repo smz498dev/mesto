@@ -11,5 +11,9 @@
 **JavaScript**
 Знакомство с JS: начало работы с DOM, первые функции, слушатели событий.
 
+**GitHub Pages**
+
+* [Готовая работа на GitHub Pages](https://smz498dev.github.io/mesto/)
+
 
 
