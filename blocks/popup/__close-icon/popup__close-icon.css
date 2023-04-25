@@ -1,15 +1,17 @@
 .popup__close-icon {
-  background: url(../../../images/close-icon.png) center no-repeat;
+  background: url(../../../images/close-icon-32.png) center no-repeat;
   width: 32px;
   min-height: 32px;
   position: absolute;
   top: -40px;
   right: -40px;
 }
+
 .popup__close-icon:hover {
   opacity: .6;
   cursor: pointer;
 }
+
 @media screen and (max-width:767px) {
   .popup__close-icon {
     background: url(../../../images/close-icon-20.png) center no-repeat;

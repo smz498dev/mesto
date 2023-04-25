@@ -3,18 +3,20 @@
   min-height: 24px;
   background-color: transparent;
   border: none;
-  background: url(../../../images/btn-edit-rectangle.svg) center no-repeat;
+  background: url(../../../images/edit-button-24.png) center no-repeat;
   position: absolute;
   right: 0;
   top: 10px;
 }
+
 .profile__info-edit:hover {
   opacity: .6;
   cursor: pointer;
 }
+
 @media screen and (max-width:767px) {
   .profile__info-edit {
-    background: url(../../../images/btn-edit-rectangle-18.png) center no-repeat;
+    background: url(../../../images/edit-button-18.png) center no-repeat;
     right: 17px;
     top: 32px;
     min-width: 18px;
