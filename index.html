@@ -97,20 +97,22 @@
     </footer>
   </div>
   <div class="popup">
-    <form class="popup__container">
-      <h2 class="popup__title">
-        Редактировать профиль
-      </h2>
-      <fieldset class="popup__input-container">
-        <input type="text" id="input-name" class="popup__input-item" name="person-name">
-        <input type="text" id="input-job" class="popup__input-item" name="person-job">
-      </fieldset>
-      <button class="popup__save-btn" type="submit">
-        Сохранить
-      </button>
-      <button type="button" class="popup__close-icon">
-      </button>
-    </form>
+    <div class="popup__container">
+      <form class="popup__form" name="edit_profile">
+        <h2 class="popup__title">
+          Редактировать профиль
+        </h2>
+        <fieldset class="popup__input-container">
+          <input type="text" id="input-name" class="popup__input-item" name="person-name">
+          <input type="text" id="input-job" class="popup__input-item" name="person-job">
+        </fieldset>
+        <button class="popup__save-btn" type="submit">
+          Сохранить
+        </button>
+        <button type="button" class="popup__close-icon">
+        </button>
+      </form>
+    </div>
   </div>
   <script src="./scripts/index.js"></script>
 </body>

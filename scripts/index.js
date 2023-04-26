@@ -5,7 +5,7 @@ let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 let inputName = document.querySelector('#input-name');
 let inputJob = document.querySelector('#input-job');
-let formEdit = document.querySelector('.popup__container');
+let formEdit = document.querySelector('.popup__form');
 
 // Открытие попапа по клику
 function openPopup() {
