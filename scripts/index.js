@@ -10,6 +10,8 @@ let formEdit = document.querySelector('.popup__container');
 // Открытие попапа по клику
 function openPopup() {
   popup.classList.add('popup_opened');
+  inputName.value = profileTitle.textContent;
+  inputJob.value = profileSubtitle.textContent;
 }
 // Закрытие попапа 
 function popupClose() {
@@ -24,9 +26,6 @@ function saveDataForm() {
 
   profileTitle.textContent = `${nameInput}`;
   profileSubtitle.textContent = `${jobInput}`;
-
-  inputName.value = profileTitle.textContent;
-  inputJob.value = profileSubtitle.textContent;
 
   popupClose();
 }
