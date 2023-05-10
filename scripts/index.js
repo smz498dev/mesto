@@ -18,8 +18,8 @@ function popupClose() {
   popup.classList.remove('popup_opened');
 }
 //Действие при нажатии на кнопку сохранить
-function saveDataForm() {
-  event.preventDefault();
+function saveDataForm(evt) {
+  evt.preventDefault();
 
   let nameInput = inputName.value;
   let jobInput = inputJob.value;
