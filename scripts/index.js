@@ -1,8 +1,11 @@
 const popupAdd = document.querySelector('#popupAdd');
 const popupEdit = document.querySelector('#popupEdit');
+const popupImg = document.querySelector('#popupImg');
+const fullImg = document.querySelector('.popup__image');
 const btnEdit = document.querySelector('.profile__info-edit');
 const btnCloseEdit = document.querySelector('#btnCloseEdit');
 const btnCloseAdd = document.querySelector('#btnCloseAdd');
+const btnCloseImg = document.querySelector('#btnCloseImg');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const inputName = document.querySelector('#input-name');
@@ -15,6 +18,7 @@ const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#elementTemplate').content;
 const btnAdd = document.querySelector('.profile__btn-add');
 
+
 // Открытие попапа по клику
 
 function openPopupEdit() {
@@ -25,8 +29,16 @@ function openPopupEdit() {
 
 function openPopupAdd() {
   popupAdd.classList.add('popup_opened');
-  
 }
+
+function openPopupImg(urlImg, nameImg) {
+  popupImg.classList.add('popup_opened');
+    fullImg.src = urlImg;
+    fullImg.alt = nameImg;
+  }
+
+openPopupImg()
+
 // Закрытие попапа 
 function closePopupEdit() {
   popupEdit.classList.remove('popup_opened');
@@ -35,13 +47,17 @@ function closePopupAdd() {
   popupAdd.classList.remove('popup_opened');
 }
 
+function closePopupImg() {
+  popupImg.classList.remove('popup_opened');
+}
+
 
 //Действие при нажатии на кнопку сохранить
 function saveDataFormEdit(evt) {
   evt.preventDefault();
 
-  let nameInput = inputName.value;
-  let jobInput = inputJob.value;
+  const nameInput = inputName.value;
+  const jobInput = inputJob.value;
 
   profileTitle.textContent = `${nameInput}`;
   profileSubtitle.textContent = `${jobInput}`;
@@ -53,10 +69,10 @@ function saveDataFormEdit(evt) {
 function createNewPlace(evt) {
   evt.preventDefault();
 
-  let namePlace = inputNamePlace.value;
-  let urlPlace = inputUrlPlace.value;
+  const namePlace = inputNamePlace.value;
+  const urlPlace = inputUrlPlace.value;
   
-  let newCard = {
+  const newCard = {
     name:`${namePlace}`, 
     link:`${urlPlace}`
   };
@@ -86,10 +102,15 @@ btnAdd.addEventListener('click', openPopupAdd);
 
 btnCloseEdit.addEventListener('click', closePopupEdit);
 btnCloseAdd.addEventListener('click', closePopupAdd);
+btnCloseImg.addEventListener('click', closePopupImg);
 
 formEdit.addEventListener('submit', saveDataFormEdit);
 formAdd.addEventListener('submit', createNewPlace);
 
+// const allCard = document.querySelectorAll('.element');
+// const allCardArray = Array.from(allCard);
+
+// console.log(allCardArray);
 
 //Добавление карточек из "коробки" при загрузке страницы:
 function addNewCard () {

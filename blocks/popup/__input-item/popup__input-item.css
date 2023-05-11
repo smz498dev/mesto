@@ -1,8 +1,8 @@
 .popup__input-item {
   font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
-  margin: 36px auto 0;
-  padding: 0;
+  margin: 20px auto 0;
+  padding: 0 0 16px 0 ;
   display: block;
   font-size: 14px;
   font-weight: 400;
