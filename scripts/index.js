@@ -1,29 +1,26 @@
-const popupAdd = document.querySelector('#popupAdd');
-const popupEdit = document.querySelector('#popupEdit');
-const popupImg = document.querySelector('#popupImg');
+const popupAdd = document.querySelector('.popup_add-mode');
+const popupEdit = document.querySelector('.popup_edit-mode');
+const popupImg = document.querySelector('.popup_img-mode');
 const fullImg = document.querySelector('.popup__image');
 const btnEdit = document.querySelector('.profile__info-edit');
-const btnCloseEdit = document.querySelector('#btnCloseEdit');
-const btnCloseAdd = document.querySelector('#btnCloseAdd');
-const btnCloseImg = document.querySelector('#btnCloseImg');
+const btnCloseEdit = document.querySelector('.popup__close-icon_edit');
+const btnCloseAdd = document.querySelector('.popup__close-icon_add');
+const btnCloseImg = document.querySelector('.popup__close-icon_img');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
+const elements = document.querySelector('.elements');
+const btnAdd = document.querySelector('.profile__btn-add');
+const titleCard = document.querySelector('.element__title');
+const popoupImageCaption = document.querySelector('.popup__caption');
+//формы и инпуты
 const inputName = document.querySelector('#input-name');
 const inputJob = document.querySelector('#input-job');
 const inputNamePlace = document.querySelector('#input-name-place');
 const inputUrlPlace = document.querySelector('#input-url');
 const formEdit = document.querySelector('#popupFormEdit');
 const formAdd = document.querySelector('#popupFormAdd');
-const elements = document.querySelector('.elements');
+
 const elementTemplate = document.querySelector('#elementTemplate').content;
-const btnAdd = document.querySelector('.profile__btn-add');
-const titleCard = document.querySelector('.element__title');
-const popoupImageCaption = document.querySelector('.popup__caption');
-
-
-
-
-
 
 //---------------------------------------------
 // Открытие попапа по клику
