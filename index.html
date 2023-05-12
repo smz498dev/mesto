@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body>
     <div class="page">
@@ -18,7 +18,7 @@
             class="profile__avatar"
             src="./images/profile-avatar.jpeg"
             alt="аватар"
-          />
+          >
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button type="button" class="profile__info-edit"></button>
@@ -26,7 +26,7 @@
           </div>
           <button type="button" class="profile__btn-add"></button>
         </section>
-        <section class="elements"></section>
+        <section class="elements" aria-label="Галерея"></section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2023 Mesto Russia</p>
@@ -42,19 +42,18 @@
               id="input-name"
               class="popup__input-item"
               name="person-name"
-            />
+            >
             <input
               type="text"
               id="input-job"
               class="popup__input-item"
               name="person-job"
-            />
+            >
           </fieldset>
           <button class="popup__save-btn" type="submit">Сохранить</button>
           <button
             type="button"
-            class="popup__close-icon popup__close-icon_edit"
-          ></button>
+            class="popup__close-icon popup__close-icon_edit"></button>
         </form>
       </div>
     </div>
@@ -69,14 +68,14 @@
               class="popup__input-item"
               name="name-place"
               placeholder="Название"
-            />
+            >
             <input
               type="text"
               id="input-url"
               class="popup__input-item"
               name="url-place"
               placeholder="Ссылка на картинку"
-            />
+            >
           </fieldset>
           <button class="popup__save-btn" type="submit">Создать</button>
           <button
@@ -87,18 +86,18 @@
       </div>
     </div>
     <div class="popup popup_img-mode popup_closed">
-      <figure class="popup__image-container">
-        <img class="popup__image" src="" alt="" />
-        <figcaption class="popup__caption"></figcaption>
+      <div class="popup__image-container">
+        <img class="popup__image" src="." alt=".">
+        <p class="popup__caption"></p>
         <button
           type="button"
-          class="popup__close-icon popup__close-icon_img"
-        ></button>
-      </figure>
+          class="popup__close-icon popup__close-icon_img">
+        </button>
+      </div>
     </div>
     <template id="elementTemplate">
       <article class="element">
-        <img class="element__img" src="" alt="" />
+        <img class="element__img" src="/">
         <div class="element__text">
           <h2 class="element__title"></h2>
           <button type="button" class="element__like"></button>
