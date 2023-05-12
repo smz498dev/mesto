@@ -18,39 +18,45 @@ const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#elementTemplate').content;
 const btnAdd = document.querySelector('.profile__btn-add');
 const titleCard = document.querySelector('.element__title');
+const popoupImageCaption = document.querySelector('.popup__caption');
 
 
 
+
+
+
+//---------------------------------------------
 // Открытие попапа по клику
-
+//Попап редактирования профиля
 function openPopupEdit() {
   popupEdit.classList.add('popup_opened');
   inputName.value = profileTitle.textContent;
   inputJob.value = profileSubtitle.textContent;
 }
-
+//Попап добавления новой карточки
 function openPopupAdd() {
   popupAdd.classList.add('popup_opened');
 }
-
+//Попап при клике на картинку.
 function openPopupImg() {
   popupImg.classList.add('popup_opened');
-   
   }
+//-----------------------------------------------
 
-
-// Закрытие попапа 
+//Закрытие попапа 
+//ред. профиль
 function closePopupEdit() {
   popupEdit.classList.remove('popup_opened');
 }
+//добавление карточки
 function closePopupAdd() {
   popupAdd.classList.remove('popup_opened');
 }
-
+//картинка fullsize
 function closePopupImg() {
   popupImg.classList.remove('popup_opened');
 }
-
+//-----------------------------------------------
 
 //Действие при нажатии на кнопку сохранить
 function saveDataFormEdit(evt) {
@@ -64,8 +70,7 @@ function saveDataFormEdit(evt) {
   closePopupEdit();
 }
 
-
-//Действие при нажатии на кнопку создать (создание и добавление нового места)
+//Действие при нажатии на кнопку создать (создание и добавление новой карточки)
 function createNewCard(evt) {
   evt.preventDefault();
 
@@ -76,15 +81,18 @@ function createNewCard(evt) {
     name:`${namePlace}`, 
     link:`${urlPlace}`
   };
-  
- 
   initialCards.push(newCard);
   
-  let newElement = elementTemplate.querySelector('.element').cloneNode(true);
+  const newElement = elementTemplate.querySelector('.element').cloneNode(true);
+  
+
   newElement.querySelector('.element__img').src = `${initialCards[initialCards.length - 1].link}`;
   newElement.querySelector('.element__title').textContent = `${initialCards[initialCards.length - 1].name}`;
+
   elements.prepend(newElement);
+
   addListenerToImages();
+
   newElement.querySelector('.element__like').addEventListener('click', (evt)=> {
     evt.target.classList.toggle('element__like_active');
   });
@@ -98,14 +106,12 @@ function createNewCard(evt) {
   closePopupAdd();
 }
 
-//listeners 
+//listeners открытие и закрытие попапов, сабмит форм.
 btnEdit.addEventListener('click', openPopupEdit);
 btnAdd.addEventListener('click', openPopupAdd);
-
 btnCloseEdit.addEventListener('click', closePopupEdit);
 btnCloseAdd.addEventListener('click', closePopupAdd);
 btnCloseImg.addEventListener('click', closePopupImg);
-
 formEdit.addEventListener('submit', saveDataFormEdit);
 formAdd.addEventListener('submit', createNewCard);
 
@@ -127,22 +133,28 @@ initialCards.forEach((item) => {
   });
 });
 };
-
 loadCardsFromBox();
 
+//Функция вешает слушатели по клику на все картинки карточек
 function addListenerToImages(){
-let imgElements = document.querySelectorAll('.element__img');
- imgElements.forEach((item) => {
-  item.addEventListener('click', (evt) =>{
-    openPopupImg();
-    let imgElement =  evt.target;
-    fullImg.src = imgElement.src;
-    
-  })
- })
-}
+  let imgElements = document.querySelectorAll('.element__img');
+  imgElements.forEach((item) => {
+    item.addEventListener('click', (evt) =>{
+      openPopupImg();
+      let imgElement =  evt.target;
+      fullImg.src = imgElement.src;
+      
+     let capText = imgElement.closest('.element').querySelector('.element__title').textContent;
+      
+     fullImg.alt = capText;
 
-
+     popoupImageCaption.textContent = capText;
+      
+      
+      console.log(popoupImageCaption);
+  });
+ });
+};
 
 
 
