@@ -10,11 +10,11 @@
 }
 
 .profile__info-edit:hover {
-  opacity: .6;
+  opacity: 0.6;
   cursor: pointer;
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width: 767px) {
   .profile__info-edit {
     background: url(../../../images/edit-button-18.svg) center no-repeat;
     right: 17px;

@@ -11,11 +11,11 @@
 }
 
 .popup__close-icon:hover {
-  opacity: .6;
+  opacity: 0.6;
   cursor: pointer;
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width: 767px) {
   .popup__close-icon {
     background: url(../../../images/close-icon-20.svg) center no-repeat;
     width: 20px;

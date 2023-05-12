@@ -1,0 +1,16 @@
+.popup_closed {
+  opacity: 0;
+  visibility: hidden;
+  animation: closePopupAnimation 0.2s linear forwards;
+}
+
+@keyframes closePopupAnimation {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

@@ -1,5 +1,16 @@
 .popup_opened {
   visibility: visible;
   opacity: 1;
-  transition: opacity 0.2s linear;
+  animation: openPopupAnimation 0.2s linear forwards;
+}
+
+@keyframes openPopupAnimation {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }
