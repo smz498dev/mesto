@@ -17,6 +17,8 @@ const formAdd = document.querySelector('#popupFormAdd');
 const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#elementTemplate').content;
 const btnAdd = document.querySelector('.profile__btn-add');
+const titleCard = document.querySelector('.element__title');
+
 
 
 // Открытие попапа по клику
@@ -31,13 +33,11 @@ function openPopupAdd() {
   popupAdd.classList.add('popup_opened');
 }
 
-function openPopupImg(urlImg, nameImg) {
+function openPopupImg() {
   popupImg.classList.add('popup_opened');
-    fullImg.src = urlImg;
-    fullImg.alt = nameImg;
+   
   }
 
-openPopupImg()
 
 // Закрытие попапа 
 function closePopupEdit() {
@@ -66,7 +66,7 @@ function saveDataFormEdit(evt) {
 
 
 //Действие при нажатии на кнопку создать (создание и добавление нового места)
-function createNewPlace(evt) {
+function createNewCard(evt) {
   evt.preventDefault();
 
   const namePlace = inputNamePlace.value;
@@ -76,13 +76,15 @@ function createNewPlace(evt) {
     name:`${namePlace}`, 
     link:`${urlPlace}`
   };
-
+  
+ 
   initialCards.push(newCard);
   
   let newElement = elementTemplate.querySelector('.element').cloneNode(true);
   newElement.querySelector('.element__img').src = `${initialCards[initialCards.length - 1].link}`;
   newElement.querySelector('.element__title').textContent = `${initialCards[initialCards.length - 1].name}`;
   elements.prepend(newElement);
+  addListenerToImages();
   newElement.querySelector('.element__like').addEventListener('click', (evt)=> {
     evt.target.classList.toggle('element__like_active');
   });
@@ -105,20 +107,18 @@ btnCloseAdd.addEventListener('click', closePopupAdd);
 btnCloseImg.addEventListener('click', closePopupImg);
 
 formEdit.addEventListener('submit', saveDataFormEdit);
-formAdd.addEventListener('submit', createNewPlace);
+formAdd.addEventListener('submit', createNewCard);
 
-// const allCard = document.querySelectorAll('.element');
-// const allCardArray = Array.from(allCard);
 
-// console.log(allCardArray);
 
 //Добавление карточек из "коробки" при загрузке страницы:
-function addNewCard () {
+function loadCardsFromBox () {
 initialCards.forEach((item) => {
   const newElement = elementTemplate.querySelector('.element').cloneNode(true);
   newElement.querySelector('.element__img').src = `${item.link}`;
   newElement.querySelector('.element__title').textContent = `${item.name}`;
   elements.prepend(newElement);
+  addListenerToImages();
   newElement.querySelector('.element__like').addEventListener('click', (evt)=> {
     evt.target.classList.toggle('element__like_active');
   });
@@ -128,8 +128,19 @@ initialCards.forEach((item) => {
 });
 };
 
-addNewCard();
+loadCardsFromBox();
 
+function addListenerToImages(){
+let imgElements = document.querySelectorAll('.element__img');
+ imgElements.forEach((item) => {
+  item.addEventListener('click', (evt) =>{
+    openPopupImg();
+    let imgElement =  evt.target;
+    fullImg.src = imgElement.src;
+    
+  })
+ })
+}
 
 
 
