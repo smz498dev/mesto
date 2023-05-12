@@ -129,14 +129,13 @@ loadCardsFromBox();
 
 //Функция вешает слушатели по клику на все картинки карточек
 function addListenerToImages() {
-  let imgElements = document.querySelectorAll('.element__img');
+  const imgElements = document.querySelectorAll('.element__img');
   imgElements.forEach((item) => {
     item.addEventListener('click', (evt) => {
       openPopup(popupImg);
-      let imgElement = evt.target;
+      const imgElement = evt.target;
       fullImg.src = imgElement.src;
-
-      let capText = imgElement
+      const capText = imgElement
         .closest('.element')
         .querySelector('.element__title').textContent;
 
