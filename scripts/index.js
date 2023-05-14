@@ -86,10 +86,11 @@ formAdd.addEventListener('submit', addNewCard);
 
 //создание новой карточки
 function createCard(textTitle, srcImage) {
+ 
   const newElement = elementTemplate.querySelector('.element').cloneNode(true);
   const elementImage = newElement.querySelector('.element__img');
   const elementTitle = newElement.querySelector('.element__title');
-
+  
   elementTitle.textContent = textTitle;
   elementImage.src = srcImage;
   elementImage.alt = textTitle;
@@ -102,14 +103,16 @@ function createCard(textTitle, srcImage) {
     fullImg.alt = elementTitle.textContent;
     popupImageCaption.textContent = textTitle;
   }))
+
   addBtnLike(newElement);
   addBtnRemove(newElement);
 
-  
-
-  console.log(newElement);
-
   return elements.prepend(newElement);
+}
+
+
+function addOneCard(element) {
+  return elements.prepend(element);
 }
 //Добавление 1 карточки через форму)
 function addNewCard(evt) {
@@ -119,7 +122,6 @@ function addNewCard(evt) {
   const srcImage = inputUrlPlace.value;
 
   createCard(namePlace, srcImage);
-
   closePopup(popupAdd);
 
   inputNamePlace.value = '';
@@ -129,10 +131,10 @@ function addNewCard(evt) {
 //Добавление карточек из "коробки" при загрузке страницы:
 function loadCardsFromBox() {
   initialCards.forEach((item) => {
-    let nameOfCard = item.name;
-    let linkToCard = item.link;
+    const nameOfCard = item.name;
+    const linkToCard = item.link;
     createCard(nameOfCard, linkToCard);
-});
+  });
 }
 
 loadCardsFromBox();
