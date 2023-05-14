@@ -106,14 +106,13 @@ function createCard(textTitle, srcImage) {
 
   addBtnLike(newElement);
   addBtnRemove(newElement);
-
+  
   return elements.prepend(newElement);
+
 }
 
 
-function addOneCard(element) {
-  return elements.prepend(element);
-}
+
 //Добавление 1 карточки через форму)
 function addNewCard(evt) {
   evt.preventDefault();
@@ -124,8 +123,7 @@ function addNewCard(evt) {
   createCard(namePlace, srcImage);
   closePopup(popupAdd);
 
-  inputNamePlace.value = '';
-  inputUrlPlace.value = '';
+  evt.target.reset();
 }
 
 //Добавление карточек из "коробки" при загрузке страницы:
@@ -134,9 +132,11 @@ function loadCardsFromBox() {
     const nameOfCard = item.name;
     const linkToCard = item.link;
     createCard(nameOfCard, linkToCard);
+    
   });
 }
 
 loadCardsFromBox();
+
 
 
