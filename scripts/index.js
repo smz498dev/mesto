@@ -11,14 +11,15 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const elements = document.querySelector('.elements');
 const btnAdd = document.querySelector('.profile__btn-add');
 const titleCard = document.querySelector('.element__title');
-const popoupImageCaption = document.querySelector('.popup__caption');
+const popupImageCaption = document.querySelector('.popup__caption');
 //формы и инпуты
 const inputName = document.querySelector('#input-name');
 const inputJob = document.querySelector('#input-job');
 const inputNamePlace = document.querySelector('#input-name-place');
 const inputUrlPlace = document.querySelector('#input-url');
-const formEdit = document.querySelector('#popupFormEdit');
-const formAdd = document.querySelector('#popupFormAdd');
+const formEdit = document.forms['edit_profile'];
+const formAdd = document.forms['add_card'];
+
 
 const elementTemplate = document.querySelector('#elementTemplate').content;
 
@@ -141,7 +142,7 @@ function addListenerToImages() {
 
       fullImg.alt = capText;
 
-      popoupImageCaption.textContent = capText;
+      popupImageCaption.textContent = capText;
     });
   });
 }
