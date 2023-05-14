@@ -25,13 +25,11 @@ const elementTemplate = document.querySelector('#elementTemplate').content;
 
 // Открытие попапа по клику
 function openPopup(mode) {
-  mode.classList.remove('popup_closed');
   mode.classList.add('popup_opened');
 }
 //Закрытие попапа
 function closePopup(mode) {
   mode.classList.remove('popup_opened');
-  mode.classList.add('popup_closed');
 }
 
 //Действие при нажатии на кнопку сохранить форму редактирования профиля
