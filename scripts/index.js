@@ -107,10 +107,12 @@ function createCard(textTitle, srcImage) {
   addBtnLike(newElement);
   addBtnRemove(newElement);
   
-  return elements.prepend(newElement);
-
+  return newElement;
 }
 
+function addCard(item) {
+  elements.prepend(item);
+}
 
 
 //Добавление 1 карточки через форму)
@@ -120,8 +122,10 @@ function addNewCard(evt) {
   const namePlace = inputNamePlace.value;
   const srcImage = inputUrlPlace.value;
 
-  createCard(namePlace, srcImage);
+  addCard(createCard(namePlace, srcImage));
+  
   closePopup(popupAdd);
+
 
   evt.target.reset();
 }
@@ -129,9 +133,11 @@ function addNewCard(evt) {
 //Добавление карточек из "коробки" при загрузке страницы:
 function loadCardsFromBox() {
   initialCards.forEach((item) => {
+
     const nameOfCard = item.name;
     const linkToCard = item.link;
-    createCard(nameOfCard, linkToCard);
+
+    addCard(createCard(nameOfCard, linkToCard));
     
   });
 }
