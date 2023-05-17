@@ -1,3 +1,4 @@
+const popup = document.querySelector('.popup');
 const popupAdd = document.querySelector('.popup_add-mode');
 const popupEdit = document.querySelector('.popup_edit-mode');
 const popupImg = document.querySelector('.popup_img-mode');
@@ -28,6 +29,8 @@ function openPopup(mode) {
 function closePopup(mode) {
   mode.classList.remove('popup_opened');
 }
+
+
 //Добавление кнопки лайка
 function addBtnLike (item) {
   item.querySelector('.element__like').addEventListener('click', (evt) => {
@@ -66,11 +69,31 @@ btnAdd.addEventListener('click', () => {
   openPopup(popupAdd);
 });
 
-
+//Закрытие попапов
 closeButtons.forEach((btn) => {
   const popupThis = btn.closest('.popup');
   btn.addEventListener('click', () => (closePopup(popupThis)));
-}); 
+  closePopupEsc(popupThis);
+  closePopupOverlay (popupThis)
+
+  });
+  //Закрытие popup клавишей ESC
+  function closePopupEsc (mode) {
+    document.addEventListener('keydown', (evt) => {
+    const key = evt.key;
+    if (key === 'Escape') {
+      closePopup(mode);
+    }
+    })
+  };
+  //Закрытие popup кликом на overlay
+  function closePopupOverlay (mode) {
+    mode.addEventListener('click', (evt) => {
+      if (evt.currentTarget === evt.target) {
+        closePopup(mode);
+      }
+    })
+  };
 
 
 formEdit.addEventListener('submit', saveDataFormEdit);
