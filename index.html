@@ -32,9 +32,9 @@
         <p class="footer__copyright">© 2023 Mesto Russia</p>
       </footer>
     </div>
-    <div class="popup popup_edit-mode popup_closed">
+    <div class="popup popup_edit-mode">
       <div class="popup__container">
-        <form class="popup__form" name="edit_profile" id="popupFormEdit">
+        <form class="popup__form" name="edit_profile" id="popupFormEdit" novalidate>
           <h2 class="popup__title">Редактировать профиль</h2>
           <fieldset class="popup__input-container">
             <input
@@ -42,12 +42,14 @@
               id="input-name"
               class="popup__input-item"
               name="person-name"
+              
             >
             <input
               type="text"
               id="input-job"
               class="popup__input-item"
               name="person-job"
+              
             >
           </fieldset>
           <button class="popup__save-btn" type="submit">Сохранить</button>
@@ -57,9 +59,9 @@
         </form>
       </div>
     </div>
-    <div class="popup popup_add-mode popup_closed">
+    <div class="popup popup_add-mode">
       <div class="popup__container">
-        <form class="popup__form" name="add_card" id="popupFormAdd">
+        <form class="popup__form" name="add_card" id="popupFormAdd" novalidate>
           <h2 class="popup__title">Новое место</h2>
           <fieldset class="popup__input-container">
             <input
@@ -68,6 +70,7 @@
               class="popup__input-item"
               name="name-place"
               placeholder="Название"
+              
             >
             <input
               type="text"
@@ -75,6 +78,7 @@
               class="popup__input-item"
               name="url-place"
               placeholder="Ссылка на картинку"
+              
             >
           </fieldset>
           <button class="popup__save-btn" type="submit">Создать</button>
@@ -85,7 +89,7 @@
         </form>
       </div>
     </div>
-    <div class="popup popup_img-mode popup_closed">
+    <div class="popup popup_img-mode">
       <div class="popup__image-container">
         <img class="popup__image" src="." alt=".">
         <p class="popup__caption"></p>
@@ -106,7 +110,7 @@
       </article>
     </template>
     <script src="./scripts/places.js"></script>
-    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
