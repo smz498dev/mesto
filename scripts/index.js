@@ -74,7 +74,7 @@ closeButtons.forEach((btn) => {
   const popupThis = btn.closest('.popup');
   btn.addEventListener('click', () => (closePopup(popupThis)));
   closePopupEsc(popupThis);
-  closePopupOverlay (popupThis)
+  closePopupOverlay(popupThis);
 
   });
   //Закрытие popup клавишей ESC
