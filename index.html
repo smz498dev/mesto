@@ -42,15 +42,27 @@
               id="input-name"
               class="popup__input-item"
               name="person-name"
+              minlength="2"
+              maxlength="40"
+              required
               
             >
+            <span class="popup__input-error input-name-error">Вы пропустили это поле.</span>
+            <!-- <span class="popup__input-error">Минимальное количество символов 2. Длина текста сейчас: 1 символ.</span> -->
+
             <input
               type="text"
               id="input-job"
               class="popup__input-item"
               name="person-job"
-              
+              minlength="2"
+              maxlength="200"
+              required
             >
+            <span class="popup__input-error input-job-error">Вы пропустили это поле.</span>
+            <!-- <span class="popup__input-error">Минимальное количество символов 2. Длина текста сейчас: 1 символ.</span> -->
+            
+
           </fieldset>
           <button class="popup__save-btn" type="submit">Сохранить</button>
           <button
@@ -70,16 +82,24 @@
               class="popup__input-item"
               name="name-place"
               placeholder="Название"
-              
+              minlength="2"
+              maxlength="30"
+              required
             >
+            <span class="popup__input-error input-name-place-error">Вы пропустили это поле.</span>
+            <!-- <span class="popup__input-error">Минимальное количество символов 2. Длина текста сейчас: 1 символ.</span> -->
+
             <input
               type="text"
               id="input-url"
               class="popup__input-item"
               name="url-place"
               placeholder="Ссылка на картинку"
+              required
               
             >
+            <span class="popup__input-error input-url-error">Введите адрес сайта.</span>
+
           </fieldset>
           <button class="popup__save-btn" type="submit">Создать</button>
           <button
