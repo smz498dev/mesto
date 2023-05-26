@@ -11,12 +11,15 @@ const btnAdd = document.querySelector('.profile__btn-add');
 const titleCard = document.querySelector('.element__title');
 const popupImageCaption = document.querySelector('.popup__caption');
 const closeButtons = document.querySelectorAll('.popup__close-icon');
-const inputName = document.querySelector('#input-name');
-const inputJob = document.querySelector('#input-job');
-const inputNamePlace = document.querySelector('#input-name-place');
-const inputUrlPlace = document.querySelector('#input-url');
+
 const formEdit = document.forms['edit_profile'];
 const formAdd = document.forms['add_card'];
+const inputName = formEdit.elements['person-name'];
+const inputJob = formEdit.elements['person-job'];
+const inputNamePlace = formAdd.elements['name-place'];
+const inputUrlPlace = formAdd.elements['url-place'];
+
+
 const elementTemplate = document.querySelector('#elementTemplate').content;
 
 //Функции:
@@ -157,6 +160,5 @@ function loadCardsFromBox() {
 }
 
 loadCardsFromBox();
-
 
 

@@ -1,39 +1,31 @@
-// enableValidation({
-//   formSelector: '.popup__form',
-//   inputSelector: '.popup__input',
-//   submitButtonSelector: '.popup__button',
-//   inactiveButtonClass: 'popup__button_disabled',
-//   inputErrorClass: 'popup__input_type_error',
-//   errorClass: 'popup__error_visible'
-// }); 
+const formError = formEdit.querySelector(`.${inputName.id}-error`);
 
 
-//Функция показывающая ошибку
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('popup__input-item_type_error');
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input-error_active');
+function showError (input, errorMessage)  {
+  input.classList.add('popup__input-item_type_error');
+  formError.textContent = errorMessage;
+  formError.classList.add('popup__input-error_active');
+};
+function hideError (input)  {
+  input.classList.remove('popup__input-item_type_error');
+  formError.classList.remove('popup__input-error_active');
+  formError.textContent = '';
 };
 
-//Функция скрывающая ошибку
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input-item_type_error');
-  errorElement.classList.remove('popup__input-error_active');
-  errorElement.textContent = '';
+const checkInputValidity = () => {
+  if (!inputName.validity.valid) {
+    showError(inputName, inputName.validationMessage);
+ }else{
+    hideError(inputName);
+ };
 };
 
-//Проверка валидности инпута
-const checkInputValidity = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
+formEdit.addEventListener('submit', function (evt) {
+evt.preventDefault();
+});
 
 
 
-
-
+inputName.addEventListener('input', function () {
+  checkInputValidity();
+});  
