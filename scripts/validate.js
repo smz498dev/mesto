@@ -1,22 +1,21 @@
-const formError = formEdit.querySelector(`.${inputName.id}-error`);
-
-
-function showError (input, errorMessage)  {
-  input.classList.add('popup__input-item_type_error');
-  formError.textContent = errorMessage;
-  formError.classList.add('popup__input-error_active');
+function showError (formElement, inputElement, errorMessage)  {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('popup__input-item_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
 };
-function hideError (input)  {
-  input.classList.remove('popup__input-item_type_error');
-  formError.classList.remove('popup__input-error_active');
-  formError.textContent = '';
+function hideError (formElement, inputElement)  {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('popup__input-item_type_error');
+  errorElement.classList.remove('popup__input-error_active');
+  errorElement.textContent = '';
 };
 
-const checkInputValidity = () => {
-  if (!inputName.validity.valid) {
-    showError(inputName, inputName.validationMessage);
+function checkInputValidity (formElement, inputElement) {
+  if (!inputElement.validity.valid) {
+    showError(formElement, inputElement, inputElement.validationMessage);
  }else{
-    hideError(inputName);
+    hideError(formElement, inputElement);
  };
 };
 
@@ -27,5 +26,27 @@ evt.preventDefault();
 
 
 inputName.addEventListener('input', function () {
-  checkInputValidity();
+  checkInputValidity(formEdit, inputName);
 });  
+
+function setEventListeners (formElement) {
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input-item'));
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement);
+    })
+  });
+} 
+
+
+function enableValidation () {
+  const formList = Array.from(document.forms);
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    })
+    setEventListeners(formElement);
+  });
+}
+
+enableValidation();
