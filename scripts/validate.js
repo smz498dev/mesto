@@ -1,19 +1,19 @@
+//Функция показывает ошибку // работает
 function showError (formElement, inputElement, errorMessage)  {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add('popup__input-item_type_error');
   errorElement.textContent = errorMessage;
   errorElement.classList.add('popup__input-error_active');
-  
-
 };
+//Функция скрывает ошибку // работает
 function hideError (formElement, inputElement)  {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove('popup__input-item_type_error');
   errorElement.classList.remove('popup__input-error_active');
   errorElement.textContent = '';
-  
-};
+  };
 
+//Функция проверяет валидность инпута
 function checkInputValidity (formElement, inputElement) {
   if (!inputElement.validity.valid) {
     showError(formElement, inputElement, inputElement.validationMessage);
@@ -22,19 +22,11 @@ function checkInputValidity (formElement, inputElement) {
  };
 };
 
-formEdit.addEventListener('submit', function (evt) {
-evt.preventDefault();
-});
-
-
-
-inputName.addEventListener('input', function () {
-  checkInputValidity(formEdit, inputName);
-});  
-
+//Функция вешает слушатели событий 
 function setEventListeners (formElement) {
   const inputList = Array.from(formElement.querySelectorAll('.popup__input-item'));
   const buttonElement = formElement.querySelector('.popup__save-btn');
+
   toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
@@ -53,7 +45,7 @@ function enableValidation () {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     })
-    const fieldsetList = Array.from(document.querySelectorAll('.popup__input-container'));
+    const fieldset = Array.from(document.querySelectorAll('.popup__input-container'));
     fieldsetList.forEach((fieldset) => {
       setEventListeners(fieldset);
     });
