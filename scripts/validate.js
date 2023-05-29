@@ -36,7 +36,7 @@ function setEventListeners (formElement, config) {
   const inputList = Array.from(formElement.querySelectorAll(`${config.inputSelector}`));
   const buttonElement = formElement.querySelector(`${config.submitButtonSelector}`);
 
-  toggleButtonState(inputList, buttonElement, validationConfig);
+  // toggleButtonState(inputList, buttonElement, validationConfig);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
@@ -60,13 +60,14 @@ function enableValidation (config) {
 //Функция, проверяющая есть ли в списке невалидные инпуты
 function hasInvalidInput (inputList) {
   return inputList.some((inputElement) => {
-    return inputElement.validity.valid;
+    return !inputElement.validity.valid;
   });
+  
 };
 
 //Функция, которая меняет состояние кнопки сабмит
 function toggleButtonState (inputList, buttonElement, config) {
-  if (!hasInvalidInput(inputList)) {
+  if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(`${config.inactiveButtonClass}`);
     buttonElement.setAttribute('disabled', true);
   }else{
