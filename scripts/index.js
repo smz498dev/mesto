@@ -27,6 +27,7 @@ const elementTemplate = document.querySelector('#elementTemplate').content;
 // Открытие попапа
 function openPopup(mode) {
   mode.classList.add('popup_opened');
+  
 }
 //Закрытие попапа
 function closePopup(mode) {
