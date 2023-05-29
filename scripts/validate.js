@@ -8,14 +8,14 @@ const validationConfig = {
 };
 
 //Функция показывает ошибку // работает
-function showError (formElement, inputElement, errorMessage, config)  {
+const showError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(`${config.inputErrorClass}`);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(`${config.errorClass}`);
 };
 //Функция скрывает ошибку // работает
-function hideError (formElement, inputElement, config)  {
+const hideError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(`${config.inputErrorClass}`);
   errorElement.classList.remove(`${config.errorClass}`);
@@ -23,7 +23,7 @@ function hideError (formElement, inputElement, config)  {
   };
 
 //Функция проверяет валидность инпута
-function checkInputValidity (formElement, inputElement) {
+const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
     showError(formElement, inputElement, inputElement.validationMessage, validationConfig);
   }else{
@@ -31,12 +31,28 @@ function checkInputValidity (formElement, inputElement) {
  };
 };
 
+//Функция, проверяющая есть ли в списке невалидные инпуты
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+
+//Функция, которая меняет состояние кнопки сабмит
+const toggleButtonState = (inputList, buttonElement, config) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(`${config.inactiveButtonClass}`);
+    buttonElement.setAttribute('disabled', true);
+  }else{
+    buttonElement.classList.remove(`${config.inactiveButtonClass}`);
+    buttonElement.removeAttribute('disabled');
+  };
+};
+
 //Функция вешает слушатели событий 
-function setEventListeners (formElement, config) {
+const setEventListeners = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(`${config.inputSelector}`));
   const buttonElement = formElement.querySelector(`${config.submitButtonSelector}`);
-
-  // toggleButtonState(inputList, buttonElement, validationConfig);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
@@ -47,7 +63,7 @@ function setEventListeners (formElement, config) {
 }; 
 
 //Функция, которая включает валидацию форм
-function enableValidation (config) {
+const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(`${config.formSelector}`));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
@@ -55,25 +71,6 @@ function enableValidation (config) {
     });
     setEventListeners(formElement, validationConfig);
   });
-};
-
-//Функция, проверяющая есть ли в списке невалидные инпуты
-function hasInvalidInput (inputList) {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-  
-};
-
-//Функция, которая меняет состояние кнопки сабмит
-function toggleButtonState (inputList, buttonElement, config) {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(`${config.inactiveButtonClass}`);
-    buttonElement.setAttribute('disabled', true);
-  }else{
-    buttonElement.classList.remove(`${config.inactiveButtonClass}`);
-    buttonElement.removeAttribute('disabled');
-  }
 };
 
 enableValidation(validationConfig);

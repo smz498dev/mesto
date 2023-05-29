@@ -11,15 +11,12 @@ const btnAdd = document.querySelector('.profile__btn-add');
 const titleCard = document.querySelector('.element__title');
 const popupImageCaption = document.querySelector('.popup__caption');
 const closeButtons = document.querySelectorAll('.popup__close-icon');
-
 const formEdit = document.forms['edit_profile'];
 const formAdd = document.forms['add_card'];
 const inputName = formEdit.elements['person-name'];
 const inputJob = formEdit.elements['person-job'];
 const inputNamePlace = formAdd.elements['name-place'];
 const inputUrlPlace = formAdd.elements['url-place'];
-
-
 const elementTemplate = document.querySelector('#elementTemplate').content;
 
 //Функции:
@@ -27,11 +24,12 @@ const elementTemplate = document.querySelector('#elementTemplate').content;
 // Открытие попапа
 function openPopup(mode) {
   mode.classList.add('popup_opened');
-  
+   
 }
 //Закрытие попапа
 function closePopup(mode) {
   mode.classList.remove('popup_opened');
+ 
 }
 
 
@@ -73,6 +71,28 @@ btnAdd.addEventListener('click', () => {
   openPopup(popupAdd);
 });
 
+//Закрытие popup клавишей ESC
+function closePopupEsc (mode) {
+  document.addEventListener('keydown', (evt) => {
+    const key = evt.key;
+    if (key === 'Escape') {
+      closePopup(mode);
+        };
+          });
+};
+
+
+
+
+//Закрытие popup кликом на overlay
+function closePopupOverlay (mode) {
+  mode.addEventListener('click', (evt) => {
+    if (evt.currentTarget === evt.target) {
+      closePopup(mode);
+    };
+  });
+};
+
 //Закрытие попапов
 closeButtons.forEach((btn) => {
   const popupThis = btn.closest('.popup');
@@ -81,24 +101,7 @@ closeButtons.forEach((btn) => {
   closePopupOverlay(popupThis);
 
   });
-  //Закрытие popup клавишей ESC
-  function closePopupEsc (mode) {
-    document.addEventListener('keydown', (evt) => {
-    const key = evt.key;
-    if (key === 'Escape') {
-      closePopup(mode);
-    }
-    })
-  };
-  //Закрытие popup кликом на overlay
-  function closePopupOverlay (mode) {
-    mode.addEventListener('click', (evt) => {
-      if (evt.currentTarget === evt.target) {
-        closePopup(mode);
-      }
-    })
-  };
-
+  
 
 formEdit.addEventListener('submit', saveDataFormEdit);
 formAdd.addEventListener('submit', addNewCard);
