@@ -22,6 +22,7 @@ const hideError = (formElement, inputElement, config) => {
   errorElement.textContent = '';
   };
 
+ 
 //Функция проверяет валидность инпута
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
@@ -38,16 +39,22 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
+const disableBtn = (buttonElement, config) => {
+  buttonElement.classList.add(`${config.inactiveButtonClass}`);
+  buttonElement.setAttribute('disabled', true);
+};
+
 //Функция, которая меняет состояние кнопки сабмит
 const toggleButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(`${config.inactiveButtonClass}`);
-    buttonElement.setAttribute('disabled', true);
+    disableBtn(buttonElement, config);
   }else{
     buttonElement.classList.remove(`${config.inactiveButtonClass}`);
     buttonElement.removeAttribute('disabled');
   };
 };
+
+
 
 //Функция вешает слушатели событий 
 const setEventListeners = (formElement, config) => {

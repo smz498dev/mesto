@@ -32,20 +32,6 @@ function closeEsc (evt) {
         };
 };
 
-//Очистка ошибок при закрытии формы
-function cleanErrors (mode) {
-  const inputElements = Array.from(mode.querySelectorAll('.popup__input-item'));
-  const errorElements = Array.from(mode.querySelectorAll('.popup__input-error'));
-
-  errorElements.forEach((el) => {
-    el.classList.remove('popup__input-error_active');
-  });
-
-  inputElements.forEach((el) => {
-    el.classList.remove('popup__input-item_type_error');
-});
-};
-
 // Открытие попапа
 function openPopup(mode) {
   mode.classList.add('popup_opened');
@@ -56,7 +42,7 @@ function openPopup(mode) {
 function closePopup(mode) {
   mode.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeEsc);
-  cleanErrors(mode);
+  
 };
 
 
@@ -85,9 +71,6 @@ function saveDataFormEdit(evt) {
   profileSubtitle.textContent = `${jobInput}`;
 
   closePopup(popupEdit);
-
-  
-
 };
 
 //listeners открытие и закрытие попапов, сабмит форм.
@@ -96,10 +79,15 @@ btnEdit.addEventListener('click', () => {
   openPopup(popupEdit);
   inputName.value = profileTitle.textContent;
   inputJob.value = profileSubtitle.textContent;
+  hideError(formEdit, inputName, validationConfig);
+  hideError(formEdit, inputJob, validationConfig);
+  
 });
 
 btnAdd.addEventListener('click', () => {
   openPopup(popupAdd);
+  hideError(formAdd, inputNamePlace, validationConfig);
+  hideError(formAdd, inputUrlPlace, validationConfig);
 });
 
   //Закрытие popup кликом на overlay
@@ -150,9 +138,7 @@ function createCard(textTitle, srcImage) {
 
 function addCard(item) {
   elements.prepend(item);
-}
-
-
+};
 //Добавление 1 карточки через форму)
 function addNewCard(evt) {
   evt.preventDefault();
@@ -165,8 +151,7 @@ function addNewCard(evt) {
   
   closePopup(popupAdd);
 
-  btnCreate.classList.add('popup__save-btn_state_inactive');
-  btnCreate.setAttribute('disabled', true);
+  disableBtn(btnCreate, validationConfig);
 
   evt.target.reset();
 };
