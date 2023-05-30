@@ -11,6 +11,7 @@ const btnAdd = document.querySelector('.profile__btn-add');
 const titleCard = document.querySelector('.element__title');
 const popupImageCaption = document.querySelector('.popup__caption');
 const closeButtons = document.querySelectorAll('.popup__close-icon');
+
 const formEdit = document.forms['edit_profile'];
 const formAdd = document.forms['add_card'];
 const inputName = formEdit.elements['person-name'];
@@ -143,13 +144,17 @@ function addNewCard(evt) {
 
   const namePlace = inputNamePlace.value;
   const srcImage = inputUrlPlace.value;
+  const btnCreate = formAdd.querySelector('.popup__save-btn');
 
   addCard(createCard(namePlace, srcImage));
   
   closePopup(popupAdd);
 
+  btnCreate.classList.add('popup__save-btn_state_inactive');
+  btnCreate.setAttribute('disabled', true);
+
   evt.target.reset();
-}
+};
 
 //Добавление карточек из "коробки" при загрузке страницы:
 function loadCardsFromBox() {
