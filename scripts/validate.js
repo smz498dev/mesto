@@ -7,19 +7,27 @@ const validationConfig = {
   errorClass: 'popup__input-error_active'
 };
 
-//Функция показывает ошибку // работает
+//Функция показывает ошибку //
 const showError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(`${config.inputErrorClass}`);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(`${config.errorClass}`);
 };
-//Функция скрывает ошибку // работает
+//Функция скрывает ошибку // 
 const hideError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(`${config.inputErrorClass}`);
   errorElement.classList.remove(`${config.errorClass}`);
   errorElement.textContent = '';
+  };
+
+  const clearErrors = (formElement, config) => {
+    const inputElements = Array.from(formElement.querySelectorAll(`${config.inputSelector}`));
+    inputElements.forEach((el) => {
+      el.classList.remove(`${config.inputErrorClass}`);
+      hideError(formElement, el, config);
+    });
   };
 
  

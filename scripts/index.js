@@ -79,15 +79,15 @@ btnEdit.addEventListener('click', () => {
   openPopup(popupEdit);
   inputName.value = profileTitle.textContent;
   inputJob.value = profileSubtitle.textContent;
-  hideError(formEdit, inputName, validationConfig);
-  hideError(formEdit, inputJob, validationConfig);
+  
+  clearErrors(formEdit, validationConfig);
   
 });
 
 btnAdd.addEventListener('click', () => {
   openPopup(popupAdd);
-  hideError(formAdd, inputNamePlace, validationConfig);
-  hideError(formAdd, inputUrlPlace, validationConfig);
+
+  clearErrors(formAdd, validationConfig);
 });
 
   //Закрытие popup кликом на overlay
