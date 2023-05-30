@@ -18,6 +18,7 @@ const inputName = formEdit.elements['person-name'];
 const inputJob = formEdit.elements['person-job'];
 const inputNamePlace = formAdd.elements['name-place'];
 const inputUrlPlace = formAdd.elements['url-place'];
+
 const elementTemplate = document.querySelector('#elementTemplate').content;
 
 //Функции:
@@ -31,6 +32,20 @@ function closeEsc (evt) {
         };
 };
 
+//Очистка ошибок при закрытии формы
+function cleanErrors (mode) {
+  const inputElements = Array.from(mode.querySelectorAll('.popup__input-item'));
+  const errorElements = Array.from(mode.querySelectorAll('.popup__input-error'));
+
+  errorElements.forEach((el) => {
+    el.classList.remove('popup__input-error_active');
+  });
+
+  inputElements.forEach((el) => {
+    el.classList.remove('popup__input-item_type_error');
+});
+};
+
 // Открытие попапа
 function openPopup(mode) {
   mode.classList.add('popup_opened');
@@ -41,6 +56,7 @@ function openPopup(mode) {
 function closePopup(mode) {
   mode.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeEsc);
+  cleanErrors(mode);
 };
 
 
@@ -63,11 +79,15 @@ function saveDataFormEdit(evt) {
 
   const nameInput = inputName.value;
   const jobInput = inputJob.value;
+  
 
   profileTitle.textContent = `${nameInput}`;
   profileSubtitle.textContent = `${jobInput}`;
 
   closePopup(popupEdit);
+
+  
+
 };
 
 //listeners открытие и закрытие попапов, сабмит форм.
@@ -164,5 +184,4 @@ function loadCardsFromBox() {
 }
 
 loadCardsFromBox();
-
 
