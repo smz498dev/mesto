@@ -22,16 +22,26 @@ const elementTemplate = document.querySelector('#elementTemplate').content;
 
 //Функции:
 
+//Закрытие Попапа на ESC
+function closeEsc (evt) {
+  const key = evt.key;
+    if (key === 'Escape') {
+      const popupOpened = document.querySelector('.popup_opened');
+      closePopup(popupOpened);
+        };
+};
+
 // Открытие попапа
 function openPopup(mode) {
   mode.classList.add('popup_opened');
-   
-}
+  document.addEventListener('keydown', closeEsc);
+};
+
 //Закрытие попапа
 function closePopup(mode) {
   mode.classList.remove('popup_opened');
- 
-}
+  document.removeEventListener('keydown', closeEsc);
+};
 
 
 //Добавление кнопки лайка
@@ -39,13 +49,13 @@ function addBtnLike (item) {
   item.querySelector('.element__like').addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__like_active');
   });
-} 
+}; 
 //Добавление кнопки удалить 
 function addBtnRemove(item) {
   item.querySelector('.element__remove').addEventListener('click', (evt) => {
     evt.target.closest('.element').remove();
   });
-} 
+}; 
 
 //Сохранить (редактирование профиля)
 function saveDataFormEdit(evt) {
@@ -58,7 +68,7 @@ function saveDataFormEdit(evt) {
   profileSubtitle.textContent = `${jobInput}`;
 
   closePopup(popupEdit);
-}
+};
 
 //listeners открытие и закрытие попапов, сабмит форм.
 
@@ -72,20 +82,7 @@ btnAdd.addEventListener('click', () => {
   openPopup(popupAdd);
 });
 
-//Закрытие popup клавишей ESC
-function closePopupEsc (mode) {
-  document.addEventListener('keydown', (evt) => {
-    const key = evt.key;
-    if (key === 'Escape') {
-      closePopup(mode);
-        };
-          });
-};
-
-
-
-
-//Закрытие popup кликом на overlay
+  //Закрытие popup кликом на overlay
 function closePopupOverlay (mode) {
   mode.addEventListener('click', (evt) => {
     if (evt.currentTarget === evt.target) {
@@ -98,9 +95,7 @@ function closePopupOverlay (mode) {
 closeButtons.forEach((btn) => {
   const popupThis = btn.closest('.popup');
   btn.addEventListener('click', () => (closePopup(popupThis)));
-  closePopupEsc(popupThis);
   closePopupOverlay(popupThis);
-
   });
   
 
@@ -131,7 +126,7 @@ function createCard(textTitle, srcImage) {
   addBtnRemove(newElement);
   
   return newElement;
-}
+};
 
 function addCard(item) {
   elements.prepend(item);
