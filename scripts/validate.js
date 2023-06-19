@@ -22,6 +22,7 @@ const hideError = (formElement, inputElement, config) => {
   errorElement.textContent = '';
   };
 
+  //Функция очищает ошибки // 
   const clearErrors = (formElement, config) => {
     const inputElements = Array.from(formElement.querySelectorAll(`${config.inputSelector}`));
     inputElements.forEach((el) => {

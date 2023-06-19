@@ -112,6 +112,7 @@ formAdd.addEventListener('submit', addNewCard);
 
 
 //создание новой карточки
+
 function createCard(textTitle, srcImage) {
  
   const newElement = elementTemplate.querySelector('.element').cloneNode(true);
@@ -135,6 +136,9 @@ function createCard(textTitle, srcImage) {
   
   return newElement;
 };
+
+
+
 
 function addCard(item) {
   elements.prepend(item);
@@ -169,4 +173,6 @@ function loadCardsFromBox() {
 }
 
 loadCardsFromBox();
+
+
 
