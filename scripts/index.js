@@ -1,3 +1,6 @@
+import {Card} from '../scripts/Card.js';
+
+
 const popup = document.querySelector('.popup');
 const popupAdd = document.querySelector('.popup_add-mode');
 const popupEdit = document.querySelector('.popup_edit-mode');
@@ -8,7 +11,7 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const elements = document.querySelector('.elements');
 const btnAdd = document.querySelector('.profile__btn-add');
-// const titleCard = document.querySelector('.element__title');
+
 const popupImageCaption = document.querySelector('.popup__caption');
 const closeButtons = document.querySelectorAll('.popup__close-icon');
 
@@ -19,7 +22,18 @@ const inputJob = formEdit.elements['person-job'];
 const inputNamePlace = formAdd.elements['name-place'];
 const inputUrlPlace = formAdd.elements['url-place'];
 
-// const elementTemplate = document.querySelector('#elementTemplate').content;
+
+export {popup, popupImg, fullImg, popupImageCaption };
+
+
+
+initialCards.forEach((item) => {
+  const card = new Card (item, '.element-template');
+  const cardElement = card.generateCard();
+  elements.prepend(cardElement);
+})
+
+
 
 //Функции:
 
@@ -33,7 +47,7 @@ function closeEsc (evt) {
 };
 
 // Открытие попапа
-function openPopup(mode) {
+export function openPopup(mode) {
   mode.classList.add('popup_opened');
   document.addEventListener('keydown', closeEsc);
 };
@@ -42,22 +56,7 @@ function openPopup(mode) {
 function closePopup(mode) {
   mode.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeEsc);
-  
-};
-
-
-//Добавление кнопки лайка
-// function addBtnLike (item) {
-//   item.querySelector('.element__like').addEventListener('click', (evt) => {
-//     evt.target.classList.toggle('element__like_active');
-//   });
-// }; 
-// //Добавление кнопки удалить 
-// function addBtnRemove(item) {
-//   item.querySelector('.element__remove').addEventListener('click', (evt) => {
-//     evt.target.closest('.element').remove();
-//   });
-// }; 
+  };
 
 //Сохранить (редактирование профиля)
 function saveDataFormEdit(evt) {
@@ -74,7 +73,6 @@ function saveDataFormEdit(evt) {
 };
 
 //listeners открытие и закрытие попапов, сабмит форм.
-
 btnEdit.addEventListener('click', () => {
   openPopup(popupEdit);
   inputName.value = profileTitle.textContent;
@@ -90,7 +88,7 @@ btnAdd.addEventListener('click', () => {
   clearErrors(formAdd, validationConfig);
 });
 
-  //Закрытие popup кликом на overlay
+//Закрытие popup кликом на overlay
 function closePopupOverlay (mode) {
   mode.addEventListener('click', (evt) => {
     if (evt.currentTarget === evt.target) {
@@ -99,16 +97,68 @@ function closePopupOverlay (mode) {
   });
 };
 
-//Закрытие попапов
+//Закрытие попапов на X
 closeButtons.forEach((btn) => {
   const popupThis = btn.closest('.popup');
   btn.addEventListener('click', () => (closePopup(popupThis)));
   closePopupOverlay(popupThis);
   });
   
-
 formEdit.addEventListener('submit', saveDataFormEdit);
 formAdd.addEventListener('submit', addNewCard);
+
+
+
+// Добавление 1 карточки через форму:
+
+function addCard(item) {
+  elements.prepend(item);
+};
+
+function addNewCard(evt) {
+  
+  evt.preventDefault();
+  
+  const newOneCard = {
+      name: `${inputNamePlace.value}`,
+      link: `${inputUrlPlace.value}`
+    };
+  const btnCreate = formAdd.querySelector('.popup__save-btn');
+  const newCard = new Card (newOneCard, '.element-template').generateCard();
+
+  addCard(newCard);
+  
+  closePopup(popupAdd);
+
+  disableBtn(btnCreate, validationConfig);
+
+  evt.target.reset();
+};
+
+
+//Загрузка карточек из коробки
+
+
+
+
+
+// СТАРАЯ РЕАЛИЗАЦИЯ
+// const titleCard = document.querySelector('.element__title');
+// const elementTemplate = document.querySelector('#elementTemplate').content;
+
+
+//Добавление кнопки лайка
+// function addBtnLike (item) {
+//   item.querySelector('.element__like').addEventListener('click', (evt) => {
+//     evt.target.classList.toggle('element__like_active');
+//   });
+// }; 
+// //Добавление кнопки удалить 
+// function addBtnRemove(item) {
+//   item.querySelector('.element__remove').addEventListener('click', (evt) => {
+//     evt.target.closest('.element').remove();
+//   });
+// }; 
 
 
 //создание новой карточки
@@ -136,36 +186,6 @@ formAdd.addEventListener('submit', addNewCard);
   
 //   return newElement;
 // };
-
-
-
-
-function addCard(item) {
-  
-  elements.prepend(item);
-};
-
-// Добавление 1 карточки через форму
-
-function addNewCard(evt) {
-  evt.preventDefault();
-  
-  const newOneCard = {
-      name: `${inputNamePlace.value}`,
-      link: `${inputUrlPlace.value}`
-    }
-
-  const btnCreate = formAdd.querySelector('.popup__save-btn');
-  const newCard = new Card (newOneCard, '.element-template').generateCard();
-
-  addCard(newCard);
-  
-  closePopup(popupAdd);
-
-  disableBtn(btnCreate, validationConfig);
-
-  evt.target.reset();
-};
 
 //Добавление карточек из "коробки" при загрузке страницы:
 // function loadCardsFromBox() {

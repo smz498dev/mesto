@@ -1,4 +1,6 @@
-class Card {
+import {popupImg, fullImg, popupImageCaption, openPopup } from '../scripts/index.js';
+
+export class Card {
 
   constructor(data, template){  
     this._template = template;
@@ -14,8 +16,6 @@ class Card {
       
     return cardElement;
   }
-
-  
   
   generateCard() {
     this._element = this._getTemplate();
@@ -30,8 +30,7 @@ class Card {
       cardName.textContent = this._name;
 
       return this._element;
-  }
-
+   }
   
    _handleCardLike(){
       this._element.querySelector('.element__like').classList.toggle('element__like_active');
@@ -42,9 +41,7 @@ class Card {
     this._element.remove();
    } 
    
-
    _setEventListeners(){
-
     const btnLike = this._element.querySelector('.element__like');
       btnLike.addEventListener('click', () => {
       this._handleCardLike();
@@ -54,7 +51,6 @@ class Card {
       this._deleteCard();
     })
 
-
     const imgElement = this._element.querySelector('.element__img');
       imgElement.addEventListener('click', function () {
 
@@ -63,19 +59,10 @@ class Card {
       fullImg.src = imgElement.src;
       fullImg.alt = imgElement.alt;
       popupImageCaption.textContent = imgElement.alt;
-    
-    
+        
     })
-
    }
-
 }
-
-initialCards.forEach((item) => {
-  const card = new Card (item, '.element-template');
-  const cardElement = card.generateCard();
-  elements.prepend(cardElement);
-})
 
 
 
