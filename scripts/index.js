@@ -8,7 +8,7 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const elements = document.querySelector('.elements');
 const btnAdd = document.querySelector('.profile__btn-add');
-const titleCard = document.querySelector('.element__title');
+// const titleCard = document.querySelector('.element__title');
 const popupImageCaption = document.querySelector('.popup__caption');
 const closeButtons = document.querySelectorAll('.popup__close-icon');
 
@@ -19,7 +19,7 @@ const inputJob = formEdit.elements['person-job'];
 const inputNamePlace = formAdd.elements['name-place'];
 const inputUrlPlace = formAdd.elements['url-place'];
 
-const elementTemplate = document.querySelector('#elementTemplate').content;
+// const elementTemplate = document.querySelector('#elementTemplate').content;
 
 //Функции:
 
@@ -47,17 +47,17 @@ function closePopup(mode) {
 
 
 //Добавление кнопки лайка
-function addBtnLike (item) {
-  item.querySelector('.element__like').addEventListener('click', (evt) => {
-    evt.target.classList.toggle('element__like_active');
-  });
-}; 
-//Добавление кнопки удалить 
-function addBtnRemove(item) {
-  item.querySelector('.element__remove').addEventListener('click', (evt) => {
-    evt.target.closest('.element').remove();
-  });
-}; 
+// function addBtnLike (item) {
+//   item.querySelector('.element__like').addEventListener('click', (evt) => {
+//     evt.target.classList.toggle('element__like_active');
+//   });
+// }; 
+// //Добавление кнопки удалить 
+// function addBtnRemove(item) {
+//   item.querySelector('.element__remove').addEventListener('click', (evt) => {
+//     evt.target.closest('.element').remove();
+//   });
+// }; 
 
 //Сохранить (редактирование профиля)
 function saveDataFormEdit(evt) {
@@ -113,45 +113,52 @@ formAdd.addEventListener('submit', addNewCard);
 
 //создание новой карточки
 
-function createCard(textTitle, srcImage) {
+// function createCard(textTitle, srcImage) {
  
-  const newElement = elementTemplate.querySelector('.element').cloneNode(true);
-  const elementImage = newElement.querySelector('.element__img');
-  const elementTitle = newElement.querySelector('.element__title');
+//   const newElement = elementTemplate.querySelector('.element').cloneNode(true);
+//   const elementImage = newElement.querySelector('.element__img');
+//   const elementTitle = newElement.querySelector('.element__title');
   
-  elementTitle.textContent = textTitle;
-  elementImage.src = srcImage;
-  elementImage.alt = textTitle;
+//   elementTitle.textContent = textTitle;
+//   elementImage.src = srcImage;
+//   elementImage.alt = textTitle;
   
-  elementImage.addEventListener('click', (evt) => {
-    openPopup(popupImg);
-    const imgElement = evt.target;
-    fullImg.src = imgElement.src;
-    fullImg.alt = elementTitle.textContent;
-    popupImageCaption.textContent = textTitle;
-  });
-
-  addBtnLike(newElement);
-  addBtnRemove(newElement);
+//   elementImage.addEventListener('click', (evt) => {
+//     openPopup(popupImg);
+//     const imgElement = evt.target;
+//     fullImg.src = imgElement.src;
+//     fullImg.alt = elementTitle.textContent;
+//     popupImageCaption.textContent = textTitle;
+//   });
+ 
+//   addBtnLike(newElement);
+//   addBtnRemove(newElement);
   
-  return newElement;
-};
+//   return newElement;
+// };
 
 
 
 
 function addCard(item) {
+  
   elements.prepend(item);
 };
-//Добавление 1 карточки через форму)
+
+// Добавление 1 карточки через форму
+
 function addNewCard(evt) {
   evt.preventDefault();
+  
+  const newOneCard = {
+      name: `${inputNamePlace.value}`,
+      link: `${inputUrlPlace.value}`
+    }
 
-  const namePlace = inputNamePlace.value;
-  const srcImage = inputUrlPlace.value;
   const btnCreate = formAdd.querySelector('.popup__save-btn');
+  const newCard = new Card (newOneCard, '.element-template').generateCard();
 
-  addCard(createCard(namePlace, srcImage));
+  addCard(newCard);
   
   closePopup(popupAdd);
 
@@ -161,18 +168,16 @@ function addNewCard(evt) {
 };
 
 //Добавление карточек из "коробки" при загрузке страницы:
-function loadCardsFromBox() {
-  initialCards.forEach((item) => {
+// function loadCardsFromBox() {
+//   initialCards.forEach((item) => {
 
-    const nameOfCard = item.name;
-    const linkToCard = item.link;
+//     const nameOfCard = item.name;
+//     const linkToCard = item.link;
 
-    addCard(createCard(nameOfCard, linkToCard));
+//     addCard(createCard(nameOfCard, linkToCard));
     
-  });
-}
-
-loadCardsFromBox();
-
-
+//   });
+// }
+ 
+// loadCardsFromBox();
 
