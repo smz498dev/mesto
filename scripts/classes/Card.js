@@ -1,4 +1,4 @@
-import {popupImg, fullImg, popupImageCaption, openPopup } from '../scripts/index.js';
+import {popupImg, fullImg, popupImageCaption, openPopup } from '../index.js';
 
 export class Card {
 

@@ -1,4 +1,4 @@
-import {Card} from '../scripts/Card.js';
+import {Card} from '../scripts/classes/Card.js';
 
 
 const popup = document.querySelector('.popup');
@@ -26,7 +26,7 @@ const inputUrlPlace = formAdd.elements['url-place'];
 export {popup, popupImg, fullImg, popupImageCaption };
 
 
-
+//Загрузка карточек "из коробки"
 initialCards.forEach((item) => {
   const card = new Card (item, '.element-template');
   const cardElement = card.generateCard();
@@ -65,7 +65,6 @@ function saveDataFormEdit(evt) {
   const nameInput = inputName.value;
   const jobInput = inputJob.value;
   
-
   profileTitle.textContent = `${nameInput}`;
   profileSubtitle.textContent = `${jobInput}`;
 
@@ -123,6 +122,7 @@ function addNewCard(evt) {
       name: `${inputNamePlace.value}`,
       link: `${inputUrlPlace.value}`
     };
+
   const btnCreate = formAdd.querySelector('.popup__save-btn');
   const newCard = new Card (newOneCard, '.element-template').generateCard();
 
